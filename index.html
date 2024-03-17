@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Pharm Calculator</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="calc.js"></script>
+
+
+</head>
+
+<body>
+  <!-- Responsive navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Drug Calculators</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">DOAC Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page content-->
+  <div class="container">
+    <div class="text-center mt-5">
+      <h1>A Free DOAC Calculator</h1>
+    </div>
+    <br><br>
+    <form>
+      <div class="form-group row">
+        <label for="drugname" class="col-sm-2 col-form-label">Drug Name</label>
+
+        <div class="col">
+          <select class="form-select" id="drugname">
+            <option selected>Choose...</option>
+            <option value="rivaroxaban">Rivaroxaban</option>
+            <option value="apixaban">Apixaban</option>
+            <option value="dabigatran">Dabigatran</option>
+            <option value="edoxaban">Edoxaban</option>
+          </select>
+        </div>
+        <br>
+        <label for="indication" class="col-sm-2 col-form-label">Indication</label>
+        <div class="col">
+          <select class="form-select" id="indication">
+            <option selected>Choose...</option>
+            <option value="AF">AF</option>
+            <option value="DVTN">DVT - New</option>
+            <option value="DVTO">DVT - Recurrent</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+        <div class="col">
+          <input class="form-control" id="weight" placeholder="Wgetfromcmm">
+        </div>
+        <label for="height" class="col-sm-2 col-form-label">Height</label>
+        <div class="col">
+          <input class="form-control" id="height" placeholder="Hgetfromcmm">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="creat" class="col">Creatinine</label>
+        <div class="col">
+          <input class="form-control" id="creat" placeholder="getfromicnet">
+        </div>
+        <label for="age" class="col">Age</label>
+        <div class="col">
+          <input class="form-control" id="age" placeholder="wheretoget">
+        </div>
+        <label for="gender" class="col">Gender</label>
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="male">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Male
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="female" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              Female
+            </label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary" >Submit</button>
+        </div>
+        <div class="col">
+          <button type="reset" class="btn btn-danger">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
