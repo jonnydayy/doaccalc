@@ -13,8 +13,7 @@
   <link href="css/styles.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="calc.js"></script>
-
+  
 
 </head>
 
@@ -45,7 +44,7 @@
         <label for="drugname" class="col-sm-2 col-form-label">Drug Name</label>
 
         <div class="col">
-          <select class="form-select" id="drugname">
+          <select class="form-select" id="drug">
             <option selected>Choose...</option>
             <option value="rivaroxaban">Rivaroxaban</option>
             <option value="apixaban">Apixaban</option>
@@ -104,13 +103,111 @@
       <br>
       <div class="form-group row">
         <div class="col">
-          <button type="submit" class="btn btn-primary" >Submit</button>
+          <button type="button" class="btn btn-primary" onclick="runscript()">Submit</button>
         </div>
         <div class="col">
-          <button type="reset" class="btn btn-danger">Reset</button>
+         <!-- <button type="reset" class="btn btn-danger">Reset</button> -->
         </div>
+
       </div>
     </form>
+
+    <div>
+      <p id=result></p>
+      <p id=dose></p>
+  </div>
+
+    <script>
+      function runscript() {
+        console.log("test")
+        let drugname = document.getElementById('drug').value
+        let weight = document.getElementById('weight').value
+        let height = document.getElementById('height').value
+        let creat = document.getElementById('creat').value
+        let gender = document.getElementById('gender')
+        let age = document.getElementById('age').value
+         let indication = document.getElementById('indication').value
+         console.log(drugname);
+        console.log(weight);
+        console.log(height);
+        console.log(creat);
+        console.log(gender);
+        console.log(age);
+        console.log(indication);
+        var adjustment = 1
+        if (gender == "F") {
+          var adjustment = 0.85
+          //IBW calculation
+          var ibw = 45.5
+        } else if (gender == 'M') {
+          var adjusmtent = 1
+        }
+        console.log("adjustment value" + adjustment)
+        //need to work out adjusted body weight here somehow :)
+        var crcl = ((((140 - age) * weight) / (0.8 * creat)) * adjustment)
+        document.getElementById("result").innerText = 'Creatinine Clearance is : ' + crcl
+
+        // if(drugname == 'Edoxaban'){
+        //     alert("Edoxaban")
+        //     if(weight <50 && crcl <50){
+        //         alert("weight and crcl <50 less than 50")
+        //     }
+        // };
+        if (drugname = 'Rivaroxaban') {
+          if (indication = 'AF') {
+            //rivaroxaban af dosages
+            if (crcl > 50) {
+              var dose = 'dose as in normal renal function, Rivaroxaban 20mg daily to be taken with food'
+            } else if (crcl >= 30 && crcl <= 50) {
+              var dose = 'Rivaroxaban 15mg once a day'
+            } else if (crcl <= 29 && crcl >= 15) {
+              var dose = 'Use with caution - Rivaroxaban 15mg once a day'
+            } else if (crcl <= 14) {
+              var dose = 'avoid'
+            } else {
+              var dose = 'outside calculation peramiters for rivaroxaban'
+            }
+          } else if (indication = 'DVTN') {
+            //rivaroxaban dvt treatment dosages
+            if (crcl > 50) {
+              var dose = 'dose as in normal renal function, Rivaroxaban 15mg twice a day for 21 days then 20mg once a day to be taken with food'
+            } else if (crcl >= 30 && crcl <= 50) {
+              var dose = 'Rivaroxaban 15mg BD for 3 weeks then 15-20mg once a day'
+            } else if (crcl <= 29 && crcl >= 15) {
+              var dose = 'Use with caution - Rivaroxaban 15mg twice a day for 3 weeks then 15-20mg once daily'
+            } else if (crcl <= 14) {
+              var dose = 'avoid'
+            } else {
+              var dose = 'outside calculation peramiters for rivaroxaban'
+            }
+          } else if (indication = 'DVTO') {
+            //rivaroxaban dvt treatment dosages
+            var dose = 'no specific advice'
+          }
+        } else if (drugname = 'Edoxaban') {
+          if (indication == "AF") {
+            if (weight < 61) {
+              if (crcl < 50 && crcl > 15) {
+                var dose = "Edoxaban 30mg OD recommended for CrCl between 15 and 50mL/min and a weight of <61 kg"
+                // alert("1")
+              } else if (crcl > 50) {
+                var dose = "Edoxaban 30mg OD recommended for CrCl greater than 50mL/min and a weight of <61 kg"
+                // alert("2")
+              } else if (crcl < 15) {
+                var dose = "Not recommended - discuss with pharmacy"
+              }
+            } else if (weight > 61) {
+              var dose = "not programmed this bit soz"
+            }
+          }
+
+        }
+
+        document.getElementById("dose").innerText = dose
+
+      }
+    </script>
+
   </div>
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
